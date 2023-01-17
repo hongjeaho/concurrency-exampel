@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class AsyncTestService {
+public class FileService {
 
   private static final List<Integer> DEFAULT_IMAGE_SIZE_LIST = List.of(1000, 400, 200);
   private static final Map<String, List<Integer>> IMAGE_SIZE_MAP = Map.of(
@@ -29,7 +29,11 @@ public class AsyncTestService {
     log.info("########[async start]###############");
     var resizeList = new ArrayList<String>();
 
-    log.info("#########{}###########", filePath);
+    log.info("#########{} : {}###########", originPath, filePath);
+
+    if (originPath.contains("1")) {
+      // throw new RuntimeException("Exception Example");
+    }
 
     DEFAULT_IMAGE_SIZE_LIST
         .forEach(size -> resizeList.add(filePath + "_" + size));
